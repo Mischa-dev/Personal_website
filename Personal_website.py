@@ -17,7 +17,8 @@ Outside of tech and school, I enjoy playing bass, swimming, reading, and perform
 
     # Completed Certifications Section (Moved Up)
     st.markdown("### Completed Certifications")
-    col1, col2 = st.columns(2) # Changed to 2 columns
+    # Use 2 columns for the first row
+    col1, col2 = st.columns(2)
 
     with col1:
         st.markdown("**PMI Project Management Ready**")
@@ -45,6 +46,38 @@ Outside of tech and school, I enjoy playing bass, swimming, reading, and perform
         except FileNotFoundError:
             st.error("Autodesk Certification file not found.")
 
+    # Use 2 columns for the second row
+    col3, col4 = st.columns(2)
+
+    with col3: # Moved Google Cert to the second row
+        st.markdown("**Google Cybersecurity Professional Certificate**")
+        # Add description
+        st.markdown("""
+        *   Covers: cybersecurity fundamentals; system administration basics; network defense & threat detection; identity & access management; incident response; compliance & governance
+        """)
+        try:
+            # Use the correct, updated filename
+            with open("GoogleCybersecurityProfessionalCertificateV2_Badge20250504-27-davnwp.pdf", "rb") as file:
+                 # Added unique key and correct filename
+                st.download_button("View Certification", file, file_name="GoogleCybersecurityProfessionalCertificate.pdf", key="google_cert_home")
+        except FileNotFoundError:
+            st.error("Google Cybersecurity Certification file not found.")
+
+    with col4: # Added column for SACA Cert
+        st.markdown("**SACA Certified Cybersecurity Specialist**") # Assuming title, adjust if needed
+        # Update description based on provided text for Silver level
+        st.markdown("""
+        *   Certifies foundational Industry 4.0 technical skills.
+        *   Silver level: Awarded for successfully passing the written knowledge exam, validating core achievement.
+        """)
+        try:
+            # Use the correct filename
+            with open("SACA_Cert_MischaNelson_20250504.pdf", "rb") as file:
+                 # Added unique key and correct filename
+                st.download_button("View Certification", file, file_name="SACA_Cybersecurity_Specialist.pdf", key="saca_cert_home")
+        except FileNotFoundError:
+            st.error("SACA Certification file not found.")
+
     st.markdown("---")  # Separator line
 
     # In Progress Certifications Section (Moved Down)
@@ -52,11 +85,6 @@ Outside of tech and school, I enjoy playing bass, swimming, reading, and perform
     st.markdown("**Cisco Certified Support Technician (CCST): Networking**")
     st.markdown("""
     *   Covers: OSI & TCP/IP models; CLI navigation; LAN/WAN configuration; IPv4 & IPv6 subnetting; network security controls; risk assessment
-    """)
-    st.markdown("**Google Cybersecurity Professional Certificate**")
-    st.markdown("""
-    *   Covers: cybersecurity fundamentals; system administration basics; network defense & threat detection; identity & access management; incident response; compliance & governance
-    *   *(See 'Google Cybersecurity Cert' tab for completed portfolio pieces)*
     """)
 
     st.markdown("---")  # Separator line

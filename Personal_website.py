@@ -64,17 +64,17 @@ Outside of tech and school, I enjoy playing bass, swimming, reading, and perform
             st.error("Google Cybersecurity Certification file not found.")
 
     with col4: # Added column for SACA Cert
-        st.markdown("**SACA Certified Cybersecurity Specialist**") # Assuming title, adjust if needed
-        # Update description based on provided text for Silver level
+        st.markdown("**SACA Certified Industry 4.0 Associate - Basic Operations**") # Updated title
+        # Update description for Basic Operations
         st.markdown("""
-        *   Certifies foundational Industry 4.0 technical skills.
-        *   Silver level: Awarded for successfully passing the written knowledge exam, validating core achievement.
+        *   Certifies skills for operators in an Industry 4.0 environment.
+        *   Silver level: Awarded for successfully passing the written knowledge exam.
         """)
         try:
-            # Use the correct filename
+            # Use the correct source filename
             with open("SACA_Cert_MischaNelson_20250504.pdf", "rb") as file:
-                 # Added unique key and correct filename
-                st.download_button("View Certification", file, file_name="SACA_Cybersecurity_Specialist.pdf", key="saca_cert_home")
+                 # Updated key and download filename
+                st.download_button("View Certification", file, file_name="SACA_Certified_I4.0_Associate_Basic_Operations.pdf", key="saca_basic_ops_cert_home")
         except FileNotFoundError:
             st.error("SACA Certification file not found.")
 

@@ -95,49 +95,88 @@ with tab2:
 
     # Completed Projects
     st.markdown("### Completed Projects")
-    col1, col2, col3 = st.columns(3)
+    # Using a 2x2 grid for 4 completed projects
+    comp_row1_col1, comp_row1_col2 = st.columns(2)
 
-    with col1:
-        if st.button("Door Alarm"):
+    with comp_row1_col1:
+        if st.button("Telegram Door Alert System", key="comp_tdas"): 
             st.link_button("Go to project", "https://github.com/gitgitgitgitgitgitgitgitgitgitgitgit/Micro-bit_door_alarm")
-        st.write("A Python project utilizing two micro:bits and a computer to send a Telegram message when a door is opened or closed.")
+        st.write("I created this Python project that uses two micro:bits and a computer to send a Telegram message when a door is opened or closed.")
 
-    with col2:
-        if st.button("Personal Website"):
+    with comp_row1_col2:
+        if st.button("Personal Website", key="comp_pers_site"):
             st.link_button("Go to project", "https://github.com/gitgitgitgitgitgitgitgitgitgitgitgit/Personal_website")
-        st.write("This website, coded 100% In python to showcase my projects and provides information about me.")
+        st.write("I coded this website 100% in Python using Streamlit to showcase my projects and provide information about me.")
 
-    with col3:
-        if st.button("Cyberdeck portable offensive cyber tool"):
-            st.info("GitHub coming soon")
-        st.write("A portable Kali Linux machine that can be used for pentesting and other cybersecurity tasks.")
+    comp_row2_col1, comp_row2_col2 = st.columns(2)
 
-    st.markdown("---")  # Separator line
+    with comp_row2_col1:
+        if st.button("Cyberdeck (Kali Linux on Raspberry Pi 4)", key="comp_cyberdeck"): 
+            st.info("GitHub coming soon") 
+        st.write("I built this portable Kali Linux machine for pentesting and other cybersecurity tasks.")
 
-    # In Progress Projects
+    with comp_row2_col2:
+        if st.button("ESP8266 Desk Gadget", key="comp_esp_gadget"): 
+            st.info("GitHub coming soon") 
+        st.write("I'm making this ESP8266 gadget with a screen and buttons to display time, weather, network speed, and a Pomodoro timer.")
+
+
+    st.markdown("---")  # Separator line    # In Progress Projects
     st.markdown("### In Progress Projects")
-    col_in_progress1, col_in_progress2, col_in_progress3 = st.columns(3)
+    prog_row1_col1, prog_row1_col2, prog_row1_col3 = st.columns(3)
+    
+    with prog_row1_col1:
+        if st.button("Seed-Based Secure Messaging System", key="prog_sbsms"): 
+            st.link_button("Go to project", "https://github.com/gitgitgitgitgitgitgitgitgitgitgitgit/Cipherless_relay/tree/main")
+        st.write("I'm developing this uncrackable messaging system that maps text to positions on a shared seed instead of using traditional encryption.")
 
-    with col_in_progress1:
-        if st.button("Weather Alert Telegram Bot"):
+    with prog_row1_col2:
+        if st.button("TridentOS (Custom Debian Distro)", key="prog_tridentos"): 
             st.info("GitHub coming soon")
-        st.write("A Telegram bot that sends weather alerts to a user based on their set location.")
+        st.write("I'm creating a custom Debian-based Linux distribution tailored to my specific needs.")
 
-    with col_in_progress2:
-        if st.button("Cipherless Relay"):
+    with prog_row1_col3:
+        if st.button("WSL Automation Toolkit", key="prog_wsl_auto"): 
             st.info("GitHub coming soon")
-        st.write("A secure messaging system using a seed to map text locations instead of traditional encryption.")
+        st.write("I'm building a collection of scripts and tools to automate tasks within Windows Subsystem for Linux.")
 
-    with col_in_progress3:
-        if st.button("ESP8266 Desktop Info Hub"):
+    prog_row2_col1, prog_row2_col2, prog_row2_col3 = st.columns(3)
+
+    with prog_row2_col1:
+        if st.button("ESP8266 Hacker Toolkit", key="prog_esp_hacker"): 
             st.info("GitHub coming soon")
-        st.write("ESP8266 gadget with buttons/screen for time, weather, network speed, Pomodoro timer.")
+        st.write("I'm working on an ESP8266-based toolkit for various Wi-Fi and network-related experiments.")
+
+    with prog_row2_col2:
+        if st.button("Kali NetHunter Phone", key="prog_nethunter"): 
+            st.info("GitHub coming soon")
+        st.write("I'm setting up Kali NetHunter on a compatible Android device for mobile penetration testing.")
+
+    with prog_row2_col3:
+        if st.button("Custom PCB Project", key="prog_pcb"): 
+            st.info("GitHub coming soon")
+        st.write("I'm designing and fabricating a custom Printed Circuit Board for one of my electronics projects.")
 
     st.markdown("---")  # Separator line
 
     # To-Do Projects
     st.markdown("### To-Do Projects")
-    st.write("*(No projects currently planned)*")
+    todo_col1, todo_col2, todo_col3 = st.columns(3)
+
+    with todo_col1:
+        if st.button("Telegram Weather Alert Bot", key="todo_weather_bot"): 
+            st.info("GitHub coming soon") 
+        st.write("I plan to create a Telegram bot that sends weather alerts to a user based on their set location.")
+
+    with todo_col2:
+        if st.button("Spotify Playback Switcher", key="todo_spotify_switch"): 
+            st.info("GitHub coming soon")
+        st.write("I want to build a tool to easily switch Spotify playback between different devices.")
+
+    with todo_col3:
+        if st.button("Wazuh SIEM Server", key="todo_wazuh"): 
+            st.info("GitHub coming soon")
+        st.write("I'm planning to set up and configure a Wazuh SIEM server for security monitoring.")
 
 with tab3:
     st.title("Google Professional Cybersecurity Certification Portfolio")

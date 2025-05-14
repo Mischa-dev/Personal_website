@@ -27,14 +27,18 @@ def set_project(name):
     st.session_state.current_project = name
     st.rerun()
 
-# Add these improved image loading functions after your imports section
+# Update the get_image_path function to handle case-sensitivity
 def get_image_path(filename):
     """Helper function to find images with flexible path handling for both local and deployed environments"""
     potential_paths = [
-        f"Projects/{filename}",  # Local development path
-        f"./Projects/{filename}",  # Relative path
-        f"{os.path.dirname(__file__)}/Projects/{filename}",  # Absolute path from script location
-        f"../Projects/{filename}",  # One level up (sometimes needed in deployment)
+        f"Projects/{filename}",  # Local development path (uppercase)
+        f"projects/{filename}",  # Deployment path (lowercase)
+        f"./Projects/{filename}",  # Relative path (uppercase)
+        f"./projects/{filename}",  # Relative path (lowercase)
+        f"{os.path.dirname(__file__)}/Projects/{filename}",  # Absolute path (uppercase)
+        f"{os.path.dirname(__file__)}/projects/{filename}",  # Absolute path (lowercase)
+        f"../Projects/{filename}",  # One level up (uppercase)
+        f"../projects/{filename}",  # One level up (lowercase)
     ]
     
     for path in potential_paths:
@@ -44,35 +48,48 @@ def get_image_path(filename):
     # If image can't be found, return None so we can handle it gracefully
     return None
 
-def load_image(filename, caption=None, use_fallback=True):
+def load_image(filename, caption=None):
     """Load an image with proper error handling and fallbacks for deployment"""
-    try:
-        # First try to find the local image
-        image_path = get_image_path(filename)
-        if image_path:
-            st.image(image_path, caption=caption)
-            return True
-            
-        # If local image not found and debugging info enabled, show details
+    # Try to find the local image
+    image_path = get_image_path(filename)
+    if image_path:
+        st.image(image_path, caption=caption)
+        return True
+    else:
+        # For debugging, show directory information
         st.write(f"### Debugging Image Loading for: {filename}")
         st.write(f"Current working directory: {os.getcwd()}")
         st.write(f"Directory contents: {os.listdir('.')}")
-        st.write(f"Projects directory exists: {os.path.exists('Projects')}")
-        if os.path.exists('Projects'):
-            st.write(f"Projects directory contents: {os.listdir('Projects')}")
         
-        # If local image not found, use a fallback URL from GitHub raw content
-        if use_fallback and "GITHUB_REPOSITORY" in os.environ:
-            repo = os.environ["GITHUB_REPOSITORY"]
-            branch = "main"  # or your default branch
-            url = f"https://raw.githubusercontent.com/{repo}/{branch}/Projects/{filename}"
-            st.image(url, caption=f"{caption} (GitHub)")
-            return True
-        else:
-            st.error(f"Image '{filename}' not available")
-            return False
-    except Exception as e:
-        st.error(f"Error loading image '{filename}': {str(e)}")
+        # Check both uppercase and lowercase "projects" directories
+        projects_upper_exists = os.path.exists('Projects')
+        projects_lower_exists = os.path.exists('projects')
+        
+        st.write(f"Projects directory exists (uppercase): {projects_upper_exists}")
+        st.write(f"projects directory exists (lowercase): {projects_lower_exists}")
+        
+        # List contents of whichever projects directory exists
+        if projects_upper_exists:
+            st.write(f"Projects directory contents: {os.listdir('Projects')}")
+        elif projects_lower_exists:
+            st.write(f"projects directory contents: {os.listdir('projects')}")
+            
+            # Try loading from lowercase projects directory directly
+            try:
+                lowercase_path = f"projects/{filename}"
+                st.image(lowercase_path, caption=caption)
+                return True
+            except:
+                pass
+        
+        st.error(f"Image '{filename}' not available")
+        return False
+
+# Import the GitHub image loading function
+try:
+    from github_images import load_github_image
+except ImportError:
+    def load_github_image(filename, caption=None):
         return False
 
 # Add global CSS with animations and smooth transitions - but let Streamlit handle the theming
@@ -301,10 +318,14 @@ with tab2:
             st.subheader("Photos")
             col1, col2 = st.columns(2)
             with col1:
-                load_image("kali closed.jpg", caption="Cyberdeck Closed")
+                # Try local loading first, fall back to GitHub if needed
+                if not load_image("kali closed.jpg", caption="Cyberdeck Closed"):
+                    load_github_image("kali closed.jpg", caption="Cyberdeck Closed")
             with col2:
-                load_image("kali open.jpg", caption="Cyberdeck Open")
-            load_image("kali on.jpg", caption="Cyberdeck Powered On")
+                if not load_image("kali open.jpg", caption="Cyberdeck Open"):
+                    load_github_image("kali open.jpg", caption="Cyberdeck Open")
+            if not load_image("kali on.jpg", caption="Cyberdeck Powered On"):
+                load_github_image("kali on.jpg", caption="Cyberdeck Powered On")
         
         elif project_name == "Personal Website":
             st.header("Personal Website")

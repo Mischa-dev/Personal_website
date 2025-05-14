@@ -4,39 +4,39 @@ import random
 def render_skills():
     st.markdown("## My Skills")
     
-    # Define skill categories and their items with text-based levels
+    # Define skill categories with simple lists instead of levels
     skills = {
         "Programming Languages": [
-            {"name": "Python", "level": "Beginner"},
-            {"name": "SQL", "level": "Beginner"},
-            {"name": "C++ (Arduino)", "level": "Beginner"},
-            {"name": "Ladder Logic", "level": "Beginner"},
-            {"name": "Rust", "level": "Beginner"},
-            {"name": "Java", "level": "Beginner"}
+            "Python",
+            "SQL",
+            "C++ (Arduino)",
+            "Ladder Logic",
+            "Rust",
+            "Java"
         ],
         "Cybersecurity & Networking": [
-            {"name": "NIST CSF", "level": "Beginner"},
-            {"name": "CIA Triad", "level": "Beginner"},
-            {"name": "Wireshark", "level": "Beginner"},
-            {"name": "Linux Hardening", "level": "Beginner"},
-            {"name": "Threat Modeling", "level": "Beginner"},
-            {"name": "Incident Response", "level": "Beginner"}
+            "NIST CSF",
+            "CIA Triad",
+            "Wireshark",
+            "Linux/Windows Hardening",  # Updated name
+            "Threat Modeling",
+            "Incident Response"
         ],
         "CAD/CAM & Manufacturing": [
-            {"name": "Fusion 360", "level": "Intermediate"},
-            {"name": "LightBurn", "level": "Beginner"},
-            {"name": "CAM & CNC (5-axis mill, lathe, plasma)", "level": "Beginner"},
-            {"name": "PCB Design", "level": "Beginner"}
+            "Fusion 360",
+            "LightBurn",
+            "CAM & CNC (5-axis mill, lathe, plasma)",
+            "PCB Design"
         ],
         "Electronics & Hardware": [
-            {"name": "PLC Automation", "level": "Intermediate"},
-            {"name": "Fanuc iRVision", "level": "Beginner"},
-            {"name": "Robotics", "level": "Beginner"},
-            {"name": "Hardware Troubleshooting", "level": "Beginner"}
+            "PLC Automation",
+            "Fanuc iRVision",
+            "Robotics",
+            "Hardware Troubleshooting"
         ]
     }
     
-    # CSS for skill items - updated to work with dark mode
+    # Updated CSS without level styling
     st.markdown("""
     <style>
     .skill-item {
@@ -44,7 +44,7 @@ def render_skills():
         justify-content: space-between;
         align-items: center;
         margin-bottom: 12px;
-        padding: 8px 12px;
+        padding: 8px 15px;
         background-color: #182C61; /* Dark blue background for dark mode */
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.2);
@@ -61,26 +61,6 @@ def render_skills():
         font-weight: 500;
         font-size: 1rem;
         color: #eaf0ff; /* Light text color for dark mode */
-    }
-    
-    .skill-level {
-        font-weight: 500;
-        padding: 3px 12px;
-        border-radius: 12px;
-        font-size: 0.85rem;
-        color: white;
-    }
-    
-    .level-Advanced {
-        background-color: #48dbfb;  /* Bright cyan blue */
-    }
-    
-    .level-Intermediate {
-        background-color: #3867d6;  /* Medium blue */
-    }
-    
-    .level-Beginner {
-        background-color: #5c7aea;  /* Lighter blue */
     }
     
     .container {
@@ -116,8 +96,7 @@ def render_skills():
                 
                 st.markdown(f"""
                 <div class="skill-item" style="animation: fadeIn 0.5s forwards; animation-delay: {delay}s; opacity: 0;">
-                    <div class="skill-name">{skill['name']}</div>
-                    <div class="skill-level level-{skill['level']}">{skill['level']}</div>
+                    <div class="skill-name">{skill}</div>
                 </div>
                 """, unsafe_allow_html=True)
             

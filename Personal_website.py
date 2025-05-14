@@ -3,6 +3,14 @@ import os
 import sys
 from datetime import datetime
 
+# Must be the first Streamlit command used in your app
+st.set_page_config(
+    page_title="Mischa Nelson",
+    page_icon="🚀",
+    layout="wide",
+    initial_sidebar_state="auto",
+)
+
 # Add the components directory to the path so we can import from it
 sys.path.append(os.path.dirname(__file__))
 
@@ -184,10 +192,9 @@ tab1, tab2, tab3, tab4 = st.tabs(["Home", "Projects", "Skills", "Google Cybersec
 
 # Home Page
 with tab1:
-    st.title("Mischa Nelson")
     
-    st.write("""Mischa Nelson
-I’m an 18-year-old high school student from Colorado, homeschooled with a mix of independent study and in-person programs. I’m passionate about creative problem-solving with a focus on cybersecurity, manufacturing automation, and electronics. I enjoy exploring how systems work and building smart, efficient solutions using both hardware and software.
+    st.markdown("### About")
+    st.write("""I'm an 18-year-old high school student from Colorado, homeschooled with a mix of independent study and in-person programs. I'm passionate about creative problem-solving with a focus on cybersecurity, manufacturing automation, and electronics. I enjoy exploring how systems work and building smart, efficient solutions using both hardware and software.
 
 Outside of tech and school, I enjoy playing bass, swimming, reading, and performing in musicals.""")
 

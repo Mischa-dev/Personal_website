@@ -27,7 +27,7 @@ def set_project(name):
     st.session_state.current_project = name
     st.rerun()
 
-# Add this function at the top of your file, just after your imports
+# Add these improved image loading functions after your imports section
 def get_image_path(filename):
     """Helper function to find images with flexible path handling for both local and deployed environments"""
     potential_paths = [
@@ -43,6 +43,37 @@ def get_image_path(filename):
     
     # If image can't be found, return None so we can handle it gracefully
     return None
+
+def load_image(filename, caption=None, use_fallback=True):
+    """Load an image with proper error handling and fallbacks for deployment"""
+    try:
+        # First try to find the local image
+        image_path = get_image_path(filename)
+        if image_path:
+            st.image(image_path, caption=caption)
+            return True
+            
+        # If local image not found and debugging info enabled, show details
+        st.write(f"### Debugging Image Loading for: {filename}")
+        st.write(f"Current working directory: {os.getcwd()}")
+        st.write(f"Directory contents: {os.listdir('.')}")
+        st.write(f"Projects directory exists: {os.path.exists('Projects')}")
+        if os.path.exists('Projects'):
+            st.write(f"Projects directory contents: {os.listdir('Projects')}")
+        
+        # If local image not found, use a fallback URL from GitHub raw content
+        if use_fallback and "GITHUB_REPOSITORY" in os.environ:
+            repo = os.environ["GITHUB_REPOSITORY"]
+            branch = "main"  # or your default branch
+            url = f"https://raw.githubusercontent.com/{repo}/{branch}/Projects/{filename}"
+            st.image(url, caption=f"{caption} (GitHub)")
+            return True
+        else:
+            st.error(f"Image '{filename}' not available")
+            return False
+    except Exception as e:
+        st.error(f"Error loading image '{filename}': {str(e)}")
+        return False
 
 # Add global CSS with animations and smooth transitions - but let Streamlit handle the theming
 st.markdown("""
@@ -249,11 +280,7 @@ with tab2:
             st.markdown("[View Code on GitHub](https://github.com/gitgitgitgitgitgitgitgitgitgitgitgit/Micro-bit_door_alarm)")
             
             # Add project image
-            image_path = get_image_path("telegram_door_alert.jpg")
-            if image_path:
-                st.image(image_path, caption="Telegram Door Alert System")
-            else:
-                st.error("Image not available")
+            load_image("telegram_door_alert.jpg", caption="Telegram Door Alert System")
             
         elif project_name == "Cyberdeck (Kali Linux on Raspberry Pi 4)":
             st.header("Cyberdeck (Kali Linux on Raspberry Pi 4)")
@@ -274,24 +301,10 @@ with tab2:
             st.subheader("Photos")
             col1, col2 = st.columns(2)
             with col1:
-                closed_path = get_image_path("kali closed.jpg")
-                if closed_path:
-                    st.image(closed_path, caption="Cyberdeck Closed")
-                else:
-                    st.error("Image not available")
-                    
+                load_image("kali closed.jpg", caption="Cyberdeck Closed")
             with col2:
-                open_path = get_image_path("kali open.jpg")
-                if open_path:
-                    st.image(open_path, caption="Cyberdeck Open")
-                else:
-                    st.error("Image not available")
-                    
-            on_path = get_image_path("kali on.jpg")
-            if on_path:
-                st.image(on_path, caption="Cyberdeck Powered On")
-            else:
-                st.error("Image not available")
+                load_image("kali open.jpg", caption="Cyberdeck Open")
+            load_image("kali on.jpg", caption="Cyberdeck Powered On")
         
         elif project_name == "Personal Website":
             st.header("Personal Website")
@@ -313,11 +326,7 @@ with tab2:
             st.markdown("[View Code on GitHub](https://github.com/gitgitgitgitgitgitgitgitgitgitgitgit/Personal_website)")
             
             # Add project image
-            image_path = get_image_path("personal_website.jpg")
-            if image_path:
-                st.image(image_path, caption="Personal Website Screenshot")
-            else:
-                st.error("Image not available")
+            load_image("personal_website.jpg", caption="Personal Website Screenshot")
             
         elif project_name == "ESP8266 Desk Gadget":
             st.header("ESP8266 Desk Gadget")
@@ -337,11 +346,7 @@ with tab2:
             st.write("- Various APIs for data")
             
             # Add project image
-            image_path = get_image_path("esp8266_desk_gadget.jpg")
-            if image_path:
-                st.image(image_path, caption="ESP8266 Desk Gadget")
-            else:
-                st.error("Image not available")
+            load_image("esp8266_desk_gadget.jpg", caption="ESP8266 Desk Gadget")
             
         elif project_name == "Cipherless_relay":
             st.header("Cipherless_relay")
@@ -368,11 +373,7 @@ with tab2:
             st.markdown("[View Code on GitHub](https://github.com/gitgitgitgitgitgitgitgitgitgitgitgit/Cipherless_relay/tree/main)")
             
             # Add project image
-            image_path = get_image_path("cipherless_relay.jpg")
-            if image_path:
-                st.image(image_path, caption="Cipherless_relay Project")
-            else:
-                st.error("Image not available")
+            load_image("cipherless_relay.jpg", caption="Cipherless_relay Project")
             
         elif project_name == "TridentOS":
             st.header("TridentOS")
@@ -385,11 +386,7 @@ with tab2:
             st.write("- Creating custom installation scripts")
             
             # Add project image
-            image_path = get_image_path("trident_os.jpg")
-            if image_path:
-                st.image(image_path, caption="TridentOS Linux Distribution")
-            else:
-                st.error("Image not available")
+            load_image("trident_os.jpg", caption="TridentOS Linux Distribution")
             
         elif project_name == "WSL Automation Toolkit":
             st.header("WSL Automation Toolkit")
@@ -408,11 +405,7 @@ with tab2:
             st.write("- Python")
             
             # Add project image
-            image_path = get_image_path("wsl_automation.jpg")
-            if image_path:
-                st.image(image_path, caption="WSL Automation Toolkit")
-            else:
-                st.error("Image not available")
+            load_image("wsl_automation.jpg", caption="WSL Automation Toolkit")
             
         elif project_name == "Red Team Pen-testing":
             st.header("Red Team Pen-testing")
@@ -432,13 +425,7 @@ with tab2:
                 st.write("- **Status:** Configured and operational")
             
             with col2:
-                nethunter_path = get_image_path("nethunter.jpg")
-                if nethunter_path:
-                    st.image(nethunter_path, caption="Kali NetHunter")
-                else:
-                    st.image("https://www.kali.org/docs/nethunter/nethunter-rootless/007-nethunter-app.png", 
-                            caption="Kali NetHunter (example image)",
-                            width=300)
+                load_image("nethunter.jpg", caption="Kali NetHunter")
             
             st.markdown("---")
             
@@ -454,13 +441,7 @@ with tab2:
                 st.write("- **Status:** Prepared and tested")
             
             with col2:
-                usb_path = get_image_path("linux usbs.jpg")
-                if usb_path:
-                    st.image(usb_path, caption="Bootable Linux USB Drives")
-                else:
-                    st.image("https://www.kali.org/docs/usb/kali-linux-live-usb-install/01-rufus.png", 
-                            caption="Bootable Linux (example image)",
-                            width=300)
+                load_image("linux usbs.jpg", caption="Bootable Linux USB Drives")
             
             st.markdown("---")
             
@@ -479,17 +460,8 @@ with tab2:
                 st.write("- **Status:** Configured with SSH access")
             
             with col2:
-                pi_zero_path = get_image_path("rasberrypizerow2.jpg")
-                if pi_zero_path:
-                    st.image(pi_zero_path, caption="Raspberry Pi Zero 2 W")
-                else:
-                    st.error("Image not available")
-                
-                bad_usb_path = get_image_path("badusb.jpg")
-                if bad_usb_path:
-                    st.image(bad_usb_path, caption="Pi Pico BadUSB")
-                else:
-                    st.error("Image not available")
+                load_image("rasberrypizerow2.jpg", caption="Raspberry Pi Zero 2 W")
+                load_image("badusb.jpg", caption="Pi Pico BadUSB")
             
             st.markdown("---")
             
@@ -519,13 +491,7 @@ with tab2:
                 st.write("- **Status:** Hardware assembled, configuring firmware")
             
             with col2:
-                esp_path = get_image_path("esp8266.jpg")
-                if esp_path:
-                    st.image(esp_path, caption="ESP8266 NodeMCU")
-                else:
-                    st.image("https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/05/ESP8266-NodeMCU-kit-12-E-pinout-gpio-pin.png", 
-                            caption="ESP8266 NodeMCU (example image)",
-                            width=300)
+                load_image("esp8266.jpg", caption="ESP8266 NodeMCU")
             
         elif project_name == "Custom PCB Project":
             st.header("Custom PCB Project")
@@ -544,11 +510,7 @@ with tab2:
             st.write("- Professional PCB fabrication service")
             
             # Add project image
-            image_path = get_image_path("custom_pcb.jpg")
-            if image_path:
-                st.image(image_path, caption="Custom PCB Design")
-            else:
-                st.error("Image not available")
+            load_image("custom_pcb.jpg", caption="Custom PCB Design")
             
         elif project_name == "Telegram Weather Alert Bot":
             st.header("Telegram Weather Alert Bot")
@@ -568,11 +530,7 @@ with tab2:
             st.write("- Database for user preferences")
             
             # Add project image
-            image_path = get_image_path("telegram_weather_bot.jpg")
-            if image_path:
-                st.image(image_path, caption="Telegram Weather Alert Bot Concept")
-            else:
-                st.error("Image not available")
+            load_image("telegram_weather_bot.jpg", caption="Telegram Weather Alert Bot Concept")
             
         elif project_name == "Spotify Playback Switcher":
             st.header("Spotify Playback Switcher")
@@ -591,11 +549,7 @@ with tab2:
             st.write("- Simple GUI interface")
             
             # Add project image
-            image_path = get_image_path("spotify_switcher.jpg")
-            if image_path:
-                st.image(image_path, caption="Spotify Playback Switcher Concept")
-            else:
-                st.error("Image not available")
+            load_image("spotify_switcher.jpg", caption="Spotify Playback Switcher Concept")
             
         elif project_name == "Wazuh SIEM Server":
             st.header("Wazuh SIEM Server")
@@ -615,11 +569,7 @@ with tab2:
             st.write("- Linux server")
             
             # Add project image
-            image_path = get_image_path("wazuh_siem.jpg")
-            if image_path:
-                st.image(image_path, caption="Wazuh SIEM Server Dashboard")
-            else:
-                st.error("Image not available")
+            load_image("wazuh_siem.jpg", caption="Wazuh SIEM Server Dashboard")
     
     # Check if a project is selected
     if st.session_state.current_project:

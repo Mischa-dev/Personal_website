@@ -194,9 +194,13 @@ tab1, tab2, tab3, tab4 = st.tabs(["Home", "Projects", "Skills", "Google Cybersec
 with tab1:
     
     st.markdown("### About")
-    st.write("""I'm an 18-year-old high school student from Colorado, homeschooled with a mix of independent study and in-person programs. I'm passionate about creative problem-solving with a focus on cybersecurity, manufacturing automation, and electronics. I enjoy exploring how systems work and building smart, efficient solutions using both hardware and software.
-
-Outside of tech and school, I enjoy playing bass, swimming, reading, and performing in musicals.""")
+    st.write(
+        "I'm an 18-year-old high school student from Colorado, homeschooled with a mix of independent study and in-person "
+        "programs. I'm passionate about creative problem-solving with a focus on cybersecurity, manufacturing automation, "
+        "and electronics. I enjoy exploring how systems work and building smart, efficient solutions using both hardware "
+        "and software.\n\n"
+        "Outside of tech and school, I enjoy playing bass, swimming, reading, and performing in musicals."
+    )
 
     st.markdown("---")  # Separator line
 
@@ -730,12 +734,12 @@ with tab3:
 # Google Cybersecurity Certification Portfolio
 with tab4:
     st.title("Google Professional Cybersecurity Certification Portfolio")
-    st.write("""
-    This certification equips learners with in-demand skills needed for entry-level cybersecurity roles.
-    The curriculum covers topics like security models, tools (SIEM, EDR), networks, threats, vulnerabilities,
-    Python scripting for security tasks, SQL, and incident response frameworks like NIST.
-    Below are the portfolio projects completed as part of this program.
-    """)
+    st.write(
+        "This certification equips learners with in-demand skills needed for entry-level cybersecurity roles. "
+        "The curriculum covers topics like security models, tools (SIEM, EDR), networks, threats, vulnerabilities, "
+        "Python scripting for security tasks, SQL, and incident response frameworks like NIST. "
+        "Below are the portfolio projects completed as part of this program."
+    )
     st.markdown("---")
 
     st.markdown("### Portfolio Pieces")

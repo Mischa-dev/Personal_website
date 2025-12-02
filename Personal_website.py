@@ -383,7 +383,7 @@ with tab2:
         elif project_name == "Cipherless_relay":
             st.header("Cipherless_relay")
             st.markdown("### Overview")
-            st.write("A seed-driven \"book cipher\" that hides your message in a deterministic pseudo-random text stream. Instead of sending encrypted files, you share a short hex pointer plus an encr[...]")
+            st.write("A seed-driven \"book cipher\" that hides your message in a deterministic pseudo-random text stream. Instead of sending encrypted files, you share a short hex pointer plus an encrypted phrase.")
             
             st.markdown("### How It Works")
             st.write("1. You and your correspondent agree on a secret string (the seed)")

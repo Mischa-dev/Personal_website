@@ -746,7 +746,7 @@ with tab4:
 
     portfolio_items = [
         {"title": "Professional Statement", "file": "Ect-files/1# Proffessional Statment..pdf", "desc": "My goals and interests in the cybersecurity field."},
-        {"title": "NIST Framework Application", "file": "Ect-files/2# Use the NIST cybersecurity frameworks to respond..pdf", "desc": "Applying the NIST Cybersecurity Framework to respond to a securit[...]"},
+        {"title": "NIST Framework Application", "file": "Ect-files/2# Use the NIST cybersecurity frameworks to respond..pdf", "desc": "Applying the NIST Cybersecurity Framework to respond to a security incident."},
         {"title": "Security Audit Report", "file": "Ect-files/3# Security audit..pdf", "desc": "Conducting a security audit and documenting findings."},
         {"title": "SQL Query Filtering", "file": "Ect-files/4# Apply filters to SQL queries.pdf", "desc": "Using SQL to filter and analyze security log data."},
         {"title": "Vulnerability Analysis", "file": "Ect-files/5# Analyze a vulnerable system for a small business .pdf", "desc": "Analyzing system vulnerabilities for a small business scenario."},

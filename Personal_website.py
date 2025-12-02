@@ -750,7 +750,7 @@ with tab4:
         {"title": "Security Audit Report", "file": "Ect-files/3# Security audit..pdf", "desc": "Conducting a security audit and documenting findings."},
         {"title": "SQL Query Filtering", "file": "Ect-files/4# Apply filters to SQL queries.pdf", "desc": "Using SQL to filter and analyze security log data."},
         {"title": "Vulnerability Analysis", "file": "Ect-files/5# Analyze a vulnerable system for a small business .pdf", "desc": "Analyzing system vulnerabilities for a small business scenario."},
-        {"title": "Python Algorithm for File Updates", "file": "Ect-files/6# Update a file with a python algorithm .pdf", "desc": "Using Python to automate the process of updating security-related fil[...]"},
+        {"title": "Python Algorithm for File Updates", "file": "Ect-files/6# Update a file with a python algorithm .pdf", "desc": "Using Python to automate the process of updating security-related files."},
         {"title": "Incident Handler's Journal", "file": "Ect-files/#7 Incident handler's journal .pdf", "desc": "Documenting the steps taken during a simulated security incident response."},
         {"title": "Resume", "file": "Ect-files/#8 Resume.pdf", "desc": "My professional resume detailing skills and experience."}
     ]

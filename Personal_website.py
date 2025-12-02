@@ -196,7 +196,7 @@ with tab1:
     st.markdown("### About")
     st.write(
         "I'm an 18-year-old high school student in the St. Vrain Valley School District in Colorado, combining homeschooling "
-        "with in person programs at the Innovation Center and the Career Elevation & Technology Center (CETC). I'm passionate "
+        "with in-person programs at the Innovation Center and the Career Elevation & Technology Center (CETC). I'm passionate "
         "about creative problem solving with a focus on cybersecurity, manufacturing automation, and electronics. I enjoy "
         "exploring how systems work and building smart, efficient solutions using both hardware and software.\n\n"
         "Outside of tech and school, I enjoy playing bass, swimming, reading, and performing in musicals."

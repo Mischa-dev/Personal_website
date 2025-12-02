@@ -195,10 +195,10 @@ with tab1:
     
     st.markdown("### About")
     st.write(
-        "I'm an 18-year-old high school student from Colorado, homeschooled with a mix of independent study and in-person "
-        "programs. I'm passionate about creative problem-solving with a focus on cybersecurity, manufacturing automation, "
-        "and electronics. I enjoy exploring how systems work and building smart, efficient solutions using both hardware "
-        "and software.\n\n"
+        "I'm an 18 year old high school student in the St. Vrain Valley School District in Colorado, combining homeschooling "
+        "with in person programs at the Innovation Center and the Career Elevation & Technology Center (CETC). I'm passionate "
+        "about creative problem solving with a focus on cybersecurity, manufacturing automation, and electronics. I enjoy "
+        "exploring how systems work and building smart, efficient solutions using both hardware and software.\n\n"
         "Outside of tech and school, I enjoy playing bass, swimming, reading, and performing in musicals."
     )
 
@@ -310,7 +310,7 @@ with tab2:
             # Add project image
             load_image("telegram_door_alert.jpg", caption="Telegram Door Alert System")
             
-        elif project_name == "Cyberdeck (Kali Linux on Raspberry Pi 4)":
+        elif project_name == "Cyberdeck (Kali Linux on Raspberry Pi 4)"):
             st.header("Cyberdeck (Kali Linux on Raspberry Pi 4)")
             st.markdown("### Overview")
             st.write("A portable Kali Linux machine built for pentesting and cybersecurity tasks, housed in a rugged carrying case.")
@@ -383,7 +383,7 @@ with tab2:
         elif project_name == "Cipherless_relay":
             st.header("Cipherless_relay")
             st.markdown("### Overview")
-            st.write("A seed-driven \"book cipher\" that hides your message in a deterministic pseudo-random text stream. Instead of sending encrypted files, you share a short hex pointer plus an encrypted phrase.")
+            st.write("A seed-driven \"book cipher\" that hides your message in a deterministic pseudo-random text stream. Instead of sending encrypted files, you share a short hex pointer plus an encr[...]")
             
             st.markdown("### How It Works")
             st.write("1. You and your correspondent agree on a secret string (the seed)")
@@ -636,7 +636,7 @@ with tab2:
             feat_col1, feat_col2 = st.columns([3, 1])
             
             with feat_col1:
-                st.markdown("**Why it matters:** Unlike traditional encryption that will be vulnerable to quantum computers, this approach maps text to positions within shared seed-based text, leaving no encryption patterns to crack.")
+                st.markdown("**Why it matters:** Unlike traditional encryption that will be vulnerable to quantum computers, this approach maps text to positions within shared seed-based text, leaving[...]")
             
             with feat_col2:
                 if st.button("View Details", key="featured_project_button"):
@@ -746,11 +746,11 @@ with tab4:
 
     portfolio_items = [
         {"title": "Professional Statement", "file": "Ect-files/1# Proffessional Statment..pdf", "desc": "My goals and interests in the cybersecurity field."},
-        {"title": "NIST Framework Application", "file": "Ect-files/2# Use the NIST cybersecurity frameworks to respond..pdf", "desc": "Applying the NIST Cybersecurity Framework to respond to a security incident."},
+        {"title": "NIST Framework Application", "file": "Ect-files/2# Use the NIST cybersecurity frameworks to respond..pdf", "desc": "Applying the NIST Cybersecurity Framework to respond to a securit[...]"},
         {"title": "Security Audit Report", "file": "Ect-files/3# Security audit..pdf", "desc": "Conducting a security audit and documenting findings."},
         {"title": "SQL Query Filtering", "file": "Ect-files/4# Apply filters to SQL queries.pdf", "desc": "Using SQL to filter and analyze security log data."},
         {"title": "Vulnerability Analysis", "file": "Ect-files/5# Analyze a vulnerable system for a small business .pdf", "desc": "Analyzing system vulnerabilities for a small business scenario."},
-        {"title": "Python Algorithm for File Updates", "file": "Ect-files/6# Update a file with a python algorithm .pdf", "desc": "Using Python to automate the process of updating security-related files."},
+        {"title": "Python Algorithm for File Updates", "file": "Ect-files/6# Update a file with a python algorithm .pdf", "desc": "Using Python to automate the process of updating security-related fil[...]"},
         {"title": "Incident Handler's Journal", "file": "Ect-files/#7 Incident handler's journal .pdf", "desc": "Documenting the steps taken during a simulated security incident response."},
         {"title": "Resume", "file": "Ect-files/#8 Resume.pdf", "desc": "My professional resume detailing skills and experience."}
     ]

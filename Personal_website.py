@@ -636,7 +636,7 @@ with tab2:
             feat_col1, feat_col2 = st.columns([3, 1])
             
             with feat_col1:
-                st.markdown("**Why it matters:** Unlike traditional encryption that will be vulnerable to quantum computers, this approach maps text to positions within shared seed-based text, leaving[...]")
+                st.markdown("**Why it matters:** Unlike traditional encryption that will be vulnerable to quantum computers, this approach maps text to positions within shared seed-based text, leaving no encryption patterns to crack.")
             
             with feat_col2:
                 if st.button("View Details", key="featured_project_button"):

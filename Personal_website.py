@@ -310,7 +310,7 @@ with tab2:
             # Add project image
             load_image("telegram_door_alert.jpg", caption="Telegram Door Alert System")
             
-        elif project_name == "Cyberdeck (Kali Linux on Raspberry Pi 4)"):
+        elif project_name == "Cyberdeck (Kali Linux on Raspberry Pi 4)":
             st.header("Cyberdeck (Kali Linux on Raspberry Pi 4)")
             st.markdown("### Overview")
             st.write("A portable Kali Linux machine built for pentesting and cybersecurity tasks, housed in a rugged carrying case.")
